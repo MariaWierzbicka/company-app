@@ -8,9 +8,6 @@ describe('Department', () => {
     const dep = new Department({});
     dep.validate(err => {
       expect(err.errors.name).to.exist;
-      after(() => {
-        mongoose.models = {};
-      });
     });
   });
   it('should throw an error if "name" is not a string', () => {
@@ -32,9 +29,6 @@ describe('Department', () => {
       const dep = new Department({ name });
       dep.validate(err => {
         expect(err.errors.name).to.exist;
-        after(() => {
-          mongoose.models = {};
-        });
       });
     }
   });
@@ -44,9 +38,6 @@ describe('Department', () => {
       const dep = new Department({ name });
       dep.validate(err => {
         expect(err).not.to.exist;
-        after(() => {
-          mongoose.models = {};
-        });
       });
     }
   });

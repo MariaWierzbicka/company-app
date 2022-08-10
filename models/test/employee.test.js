@@ -8,27 +8,18 @@ describe('Employee', () => {
     const employee = new Employee({lastName: 'Doe', department: 'department'});
     employee.validate(err => {
       expect(err.errors.firstName).to.exist;
-      after(() => {
-        mongoose.models = {};
-      });
     });
   });
   it('should throw an error if lastName is missing', () => {
     const employee = new Employee({firstName: 'John', department: 'dep'});
     employee.validate(err => {
       expect(err.errors.lastName).to.exist;
-      after(() => {
-        mongoose.models = {};
-      });
     });
   });
   it('should throw an error if department is missing', () => {
     const employee = new Employee({firstName: 'John', lastName: 'Doe'});
     employee.validate(err => {
       expect(err.errors.department).to.exist;
-      after(() => {
-        mongoose.models = {};
-      });
     });
   });
   it('should throw an error if firstName is not a string', () => {
@@ -39,9 +30,6 @@ describe('Employee', () => {
   
       employee.validate(err => {
         expect(err.errors.firstName).to.exist;
-        after(() => {
-          mongoose.models = {};
-        });
       });  
     }  
   });
@@ -53,9 +41,6 @@ describe('Employee', () => {
   
       employee.validate(err => {
         expect(err.errors.lastName).to.exist;
-        after(() => {
-          mongoose.models = {};
-        });
       });  
     }  
   });
@@ -67,9 +52,6 @@ describe('Employee', () => {
   
       employee.validate(err => {
         expect(err.errors.department).to.exist;
-        after(() => {
-          mongoose.models = {};
-        });
       });  
     }  
   });
@@ -78,9 +60,6 @@ describe('Employee', () => {
       const employee = new Employee({ firstName: '', lastName: 'Doe', department: 'dep' });
       employee.validate(err => {
         expect(err.errors.firstName).to.exist;
-        after(() => {
-          mongoose.models = {};
-        });
       });  
   });
   it('should throw an error if lastName is empty', () => {
@@ -88,9 +67,6 @@ describe('Employee', () => {
     const employee = new Employee({ firstName: 'John', lastName: '', department: 'dep' });
     employee.validate(err => {
       expect(err.errors.lastName).to.exist;
-      after(() => {
-        mongoose.models = {};
-      });
     });  
   });
   it('should throw an error if department is empty', () => {
@@ -98,9 +74,6 @@ describe('Employee', () => {
     const employee = new Employee({ firstName: 'John', lastName: 'Doe', department: '' });
     employee.validate(err => {
       expect(err.errors.department).to.exist;
-      after(() => {
-        mongoose.models = {};
-      });
     });  
   });
   it('should not throw an error if data is correct', () => {
@@ -108,9 +81,6 @@ describe('Employee', () => {
     const employee = new Employee({ firstName: 'John', lastName: 'Doe', department: 'dep' });
     employee.validate(err => {
       expect(err).not.to.exist;
-      after(() => {
-        mongoose.models = {};
-      });
     });  
   });
 });
